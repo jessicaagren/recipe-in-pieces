@@ -19,14 +19,18 @@ export default function AppShellComponent() {
   return (
     <AppShell
       p='lg'
-      header={{ height: 180, collapsed: !pinned, offset: false }}
+      header={{
+        height: pinned ? 180 : 80,
+      }}
       footer={{ height: 60 }}>
       <AppShell.Header
         p='inherit'
+        m='0'
         bg='pink'
+        bd='none'
         style={{
-          transition: 'transform 0.3s',
-          transform: pinned ? 'translateY(0)' : 'translateY(-100%)',
+          transition: 'all 0.3s ease',
+          overflow: 'hidden',
         }}>
         <Stack>
           <Title order={1}>
@@ -36,12 +40,25 @@ export default function AppShellComponent() {
                 src='/src/assets/logo1.svg'
                 mah={60}
                 w={200}
-                style={{ objectFit: 'contain' }}
                 alt='Recipe in Pieces logo'
+                pb={pinned ? 0 : 'lg'}
+                style={{
+                  objectFit: 'contain',
+                  transition: 'all 0.3s ease',
+                }}
               />
             </Anchor>
           </Title>
-          <Group mt='xs' justify='space-between'>
+          <Group
+            visibleFrom='sm'
+            mt='xs'
+            justify='space-between'
+            style={{
+              opacity: pinned ? 1 : 0,
+              transform: pinned ? 'translateY(0)' : 'translateY(-100px)',
+              transition: 'all 0.3s ease',
+              pointerEvents: pinned ? 'auto' : 'none',
+            }}>
             <CategoryMenu categories={categories} />
             <PlusButton />
           </Group>
@@ -51,12 +68,12 @@ export default function AppShellComponent() {
       {/* <AppShell.Navbar>Navbar</AppShell.Navbar> */}
 
       <AppShell.Main pt='var(--app-shell-header-height)'>
-        {/* <div style={{ paddingBottom: 80, paddingTop: 20 }}> */}
-        <Outlet />
-        {/* </div> */}
+        <div style={{ paddingBottom: 80, paddingTop: 20 }}>
+          <Outlet />
+        </div>
       </AppShell.Main>
-      <AppShell.Footer p='md'>
-        <Text c='dimmed' ta='center' size='sm'>
+      <AppShell.Footer p='md' bg='pink' bd='none'>
+        <Text c='white' ta='center' size='sm'>
           Recepten och bilder är inlagda av ~moi~.
         </Text>
       </AppShell.Footer>
