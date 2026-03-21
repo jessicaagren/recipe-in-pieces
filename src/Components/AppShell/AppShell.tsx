@@ -6,13 +6,12 @@ import {
   Text,
   Anchor,
   Image,
-  Button,
 } from '@mantine/core';
 import { categories } from '../../Data/categories';
 import CategoryMenu from '../CategoryMenu/CategoryMenu';
 import { Link, Outlet } from 'react-router-dom';
-import { FaPlus } from 'react-icons/fa';
 import { useHeadroom } from '@mantine/hooks';
+import PlusButton from '../Buttons/PlusButton';
 
 export default function AppShellComponent() {
   const pinned = useHeadroom({ fixedAt: 0 });
@@ -20,7 +19,7 @@ export default function AppShellComponent() {
   return (
     <AppShell
       p='lg'
-      header={{ height: 150, collapsed: !pinned, offset: false }}
+      header={{ height: 180, collapsed: !pinned, offset: false }}
       footer={{ height: 60 }}>
       <AppShell.Header
         p='inherit'
@@ -44,14 +43,7 @@ export default function AppShellComponent() {
           </Title>
           <Group mt='xs'>
             <CategoryMenu categories={categories} />
-            <Button
-              component={Link}
-              to={'/'}
-              color='pink.0'
-              c='pink.9'
-              bdrs='xs'>
-              <FaPlus />
-            </Button>
+            <PlusButton path='/' />
           </Group>
         </Stack>
       </AppShell.Header>
