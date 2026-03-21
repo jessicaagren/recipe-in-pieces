@@ -1,11 +1,28 @@
+import { slugify } from '../Utils/slugify';
+
 export type Tag = {
   id: string;
   label: string;
-  categoryIds?: string[]; // vilka kategorier den hör till
+};
+
+const create = (tag: Omit<Tag, 'id'>): Tag => {
+  const id = slugify(tag.label);
+
+  return {
+    ...tag,
+    id,
+  };
 };
 
 export const tags: Tag[] = [
-  { id: 'vegansk', label: 'Vegansk', categoryIds: ['mat'] },
-  { id: 'snabb', label: 'Snabb', categoryIds: ['mat', 'snacks'] },
-  { id: 'glutenfri', label: 'Glutenfri' },
+  create({ label: 'Vegetarisk' }),
+  create({ label: 'Vegansk' }),
+  create({ label: 'Snabb' }),
+  create({ label: 'Small batch' }),
+  create({ label: 'Sött' }),
+  create({ label: 'Choklad' }),
+  create({ label: 'Vanilj' }),
+  create({ label: 'Tofu' }),
+  create({ label: 'Nudlar' }),
+  create({ label: 'Pasta' }),
 ];
