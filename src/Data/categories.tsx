@@ -23,6 +23,13 @@ export const categories: Category[] = [
   create({ title: 'Middag', path: '/mat/middag', parentId: 'mat' }),
 
   create({ title: 'Efterrätt', path: '/efterratt' }),
+  create({ title: 'Glass', path: '/efterratt/glass', parentId: 'efterratt' }),
+  create({ title: 'Paj', path: '/efterratt/paj', parentId: 'efterratt' }),
+  create({
+    title: 'Choklad',
+    path: '/efterratt/choklad',
+    parentId: 'efterratt',
+  }),
 
   create({ title: 'Bakat', path: '/bakat' }),
   create({ title: 'Kladdkaka', path: '/bakat/kladdkaka', parentId: 'bakat' }),
@@ -43,6 +50,13 @@ export const categories: Category[] = [
   }),
 
   create({ title: 'Snacks', path: '/snacks' }),
+  create({ title: 'Chips', path: '/snacks/chips', parentId: 'snacks' }),
+  create({ title: 'Popcorn', path: '/snacks/popcorn', parentId: 'snacks' }),
+  create({ title: 'Nötter', path: '/snacks/notter', parentId: 'snacks' }),
+  create({ title: 'Godis', path: '/snacks/godis', parentId: 'snacks' }),
 
   create({ title: 'Dryck', path: '/dryck' }),
+  create({ title: 'Smoothie', path: '/dryck/smoothie', parentId: 'dryck' }),
+  create({ title: 'Juice', path: '/dryck/juice', parentId: 'dryck' }),
+  create({ title: 'Cocktail', path: '/dryck/cocktail', parentId: 'dryck' }),
 ];
