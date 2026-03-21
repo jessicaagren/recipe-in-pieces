@@ -16,6 +16,14 @@ type Props = {
 
 export default function RecipeCard({ recipe }: Props) {
   const [mainCategory, subCategory] = recipe.categories;
+  const gradients: Record<string, string> = {
+    Bakat: 'linear-gradient(135deg, #FF006E 0%, #ff8cb8 100%)',
+    Mat: 'linear-gradient(135deg, #3A86FF 0%, #a0c4ff 100%)',
+    Snacks: 'linear-gradient(135deg, #FB5607 0%, #ffd6a5 100%)',
+    Dryck: 'linear-gradient(135deg, #8338EC 0%, #cdb4db 100%)',
+  };
+  const gradient =
+    gradients[mainCategory] || 'linear-gradient(135deg, #eee 0%, #ccc 100%)';
 
   return (
     <Link to={recipe.path ?? '/recipe'} style={{ textDecoration: 'none' }}>
@@ -32,10 +40,7 @@ export default function RecipeCard({ recipe }: Props) {
             {recipe.image ? (
               <Image src={recipe.image} h='auto' alt={recipe.title} />
             ) : (
-              <Box
-                h='100%'
-                bg='linear-gradient(135deg, #FF006E 0%, #ff8cb8 100%)'
-              />
+              <Box h='100%' bg={gradient} />
             )}
           </AspectRatio>
         </Card.Section>
