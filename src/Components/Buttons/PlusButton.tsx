@@ -1,15 +1,14 @@
 import { Button } from '@mantine/core';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-type PlusButtonProps = {
-  path: string;
-};
+export default function PlusButton() {
+  const navigate = useNavigate();
 
-export default function PlusButton({ path }: PlusButtonProps) {
   return (
     <Button
-      component={Link}
-      to={path}
+      onClick={() => {
+        navigate('/nytt-recept');
+      }}
       variant='transparent'
       style={{
         backgroundImage: "url('/src/assets/torn-paper/plus.png')",
