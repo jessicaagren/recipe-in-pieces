@@ -2,6 +2,7 @@
 import { Menu, Button, Group, Container, Flex } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import type { Category } from '../../Data/categories';
+import CategoryButton from '../Buttons/CategoryButton';
 
 type Props = {
   categories: Category[];
@@ -18,7 +19,7 @@ export default function CategoryMenu({ categories }: Props) {
     <>
       {/* Desktop: show current menu */}
       <Group visibleFrom='sm'>
-        {rootCategories.map((root) => {
+        {rootCategories.map((root, index) => {
           const children = getChildren(categories, root.id);
           return (
             <Menu
@@ -28,14 +29,19 @@ export default function CategoryMenu({ categories }: Props) {
               width={200}
               position='bottom-start'>
               <Menu.Target>
-                <Button
+                <CategoryButton
+                  path={root.path || '/'}
+                  category={root}
+                  imageIndex={index + 1}
+                />
+                {/* <Button
                   component={Link}
                   to={root.path || '/'}
                   bdrs='xs'
                   variant='outline'
                   color='white'>
                   {root.title}
-                </Button>
+                </Button> */}
               </Menu.Target>
               {children.length > 0 && (
                 <Menu.Dropdown>
@@ -58,9 +64,23 @@ export default function CategoryMenu({ categories }: Props) {
       <Flex hiddenFrom='sm'>
         <Menu withinPortal width='30%'>
           <Menu.Target>
-            <Button bdrs='xs' variant='outline' color='white'>
-              Kategorier
+            {/* <CategoryButton title='Kategorier' imageIndex={1} link={false} /> */}
+            <Button
+              variant='transparent'
+              style={{
+                backgroundImage: 'url(/src/assets/torn-paper/1.png',
+                backgroundSize: '100% 100%',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+                padding: '20px 40px',
+                color: 'black',
+                minHeight: '60px',
+              }}>
+              Kategorier{' '}
             </Button>
+            {/* <Button bdrs='xs' variant='outline' color='white'>
+              Kategorier
+            </Button> */}
           </Menu.Target>
 
           <Menu.Dropdown>
