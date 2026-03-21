@@ -1,4 +1,4 @@
-import { Menu, Button, Group, Flex } from '@mantine/core';
+import { Menu, Group, Flex } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import type { Category } from '../../Data/categories';
 import CategoryButton from '../Buttons/CategoryButton';
