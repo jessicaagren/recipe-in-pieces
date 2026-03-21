@@ -1,5 +1,4 @@
-// import { Menu, Button, Group } from '@mantine/core';
-import { Menu, Button, Group, Container, Flex } from '@mantine/core';
+import { Menu, Button, Group, Flex } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import type { Category } from '../../Data/categories';
 import CategoryButton from '../Buttons/CategoryButton';
@@ -13,7 +12,6 @@ const getChildren = (categories: Category[], parentId: string) =>
 
 export default function CategoryMenu({ categories }: Props) {
   const rootCategories = categories.filter((cat) => !cat.parentId);
-  const allCategories = categories;
 
   return (
     <>
@@ -34,14 +32,6 @@ export default function CategoryMenu({ categories }: Props) {
                   category={root}
                   imageIndex={index + 1}
                 />
-                {/* <Button
-                  component={Link}
-                  to={root.path || '/'}
-                  bdrs='xs'
-                  variant='outline'
-                  color='white'>
-                  {root.title}
-                </Button> */}
               </Menu.Target>
               {children.length > 0 && (
                 <Menu.Dropdown>
@@ -64,7 +54,6 @@ export default function CategoryMenu({ categories }: Props) {
       <Flex hiddenFrom='sm'>
         <Menu withinPortal width='30%'>
           <Menu.Target>
-            {/* <CategoryButton title='Kategorier' imageIndex={1} link={false} /> */}
             <Button
               variant='transparent'
               style={{
@@ -76,11 +65,8 @@ export default function CategoryMenu({ categories }: Props) {
                 color: 'black',
                 minHeight: '60px',
               }}>
-              Kategorier{' '}
-            </Button>
-            {/* <Button bdrs='xs' variant='outline' color='white'>
               Kategorier
-            </Button> */}
+            </Button>
           </Menu.Target>
 
           <Menu.Dropdown>
