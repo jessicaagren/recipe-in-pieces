@@ -7,6 +7,7 @@ import RecipePage from './Components/Routes/RecipePage';
 import { categories } from './Data/categories';
 import { recipes } from './Data/recipes';
 import CategoryPage from './Components/Routes/CategoryPage';
+import FormPage from './Components/Routes/FormPage';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,8 @@ const router = createBrowserRouter([
         path,
         element: <CategoryPage />,
       })),
+
+      { path: '/nytt-recept', element: <FormPage /> },
     ],
   },
 ]);
