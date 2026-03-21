@@ -43,7 +43,7 @@ export default function AppShellComponent() {
           </Title>
           <Group mt='xs' justify='space-between'>
             <CategoryMenu categories={categories} />
-            <PlusButton path='/' />
+            <PlusButton />
           </Group>
         </Stack>
       </AppShell.Header>
