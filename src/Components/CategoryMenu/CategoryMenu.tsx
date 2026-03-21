@@ -19,20 +19,25 @@ export default function CategoryMenu({ categories }: Props) {
       <Group visibleFrom='sm'>
         {rootCategories.map((root, index) => {
           const children = getChildren(categories, root.id);
+
           return (
             <Menu
               trigger='hover'
               key={root.id}
               shadow='md'
               width={200}
-              position='bottom-start'>
+              position='bottom-start'
+              withinPortal>
               <Menu.Target>
-                <CategoryButton
-                  path={root.path || '/'}
-                  category={root}
-                  imageIndex={index + 1}
-                />
+                <div style={{ display: 'inline-block' }}>
+                  <CategoryButton
+                    path={root.path || '/'}
+                    category={root}
+                    imageIndex={index + 1}
+                  />
+                </div>
               </Menu.Target>
+
               {children.length > 0 && (
                 <Menu.Dropdown>
                   {children.map((child) => (
@@ -54,7 +59,10 @@ export default function CategoryMenu({ categories }: Props) {
       <Flex hiddenFrom='sm'>
         <Menu withinPortal width='30%'>
           <Menu.Target>
-            <Button
+            <div style={{ display: 'inline-block' }}>
+              <CategoryButton title={'Kategorier'} imageIndex={1} />
+            </div>
+            {/* <Button
               variant='transparent'
               style={{
                 backgroundImage: 'url(/src/assets/torn-paper/1.png',
@@ -66,7 +74,7 @@ export default function CategoryMenu({ categories }: Props) {
                 minHeight: '60px',
               }}>
               Kategorier
-            </Button>
+            </Button> */}
           </Menu.Target>
 
           <Menu.Dropdown>
