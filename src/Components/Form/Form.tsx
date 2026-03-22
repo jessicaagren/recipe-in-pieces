@@ -85,13 +85,13 @@ export default function Form() {
             onCreate={createTag}
           />
 
-          <ImageUpload file={file} setFile={setFile} />
-
           <NumberInput label='Antal portioner' min={1} max={20} />
 
           <IngredientInput />
 
           <InstructionsInput />
+
+          <ImageUpload file={file} setFile={setFile} />
 
           <Button>Spara</Button>
         </Stack>

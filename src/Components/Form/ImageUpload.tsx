@@ -15,7 +15,7 @@ export default function ImageUpload({ file, setFile }: ImageUploadProps) {
   };
 
   return (
-    <Group mt='md'>
+    <Group>
       <FileButton
         resetRef={resetRef}
         onChange={setFile}
