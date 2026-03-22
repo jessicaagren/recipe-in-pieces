@@ -28,7 +28,9 @@ export default function RecipePage({ recipeId }: Props): React.ReactNode {
   return (
     <Container size='lg'>
       <Stack>
-        <Title order={2}>{recipe.title}</Title>
+        <Title order={2} c='pink'>
+          {recipe.title}
+        </Title>
         <SimpleGrid>
           {recipe.image ? (
             <Image h='auto' mah='400' alt={recipe.title} src={recipe.image} />

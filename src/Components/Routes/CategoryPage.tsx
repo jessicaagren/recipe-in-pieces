@@ -3,6 +3,7 @@ import { categories } from '../../Data/categories';
 import { useMemo } from 'react';
 import { recipes } from '../../Data/recipes';
 import RecipeCardGrid from '../RecipeCard/RecipeCardGrid';
+import { Title } from '@mantine/core';
 
 export default function CategoryPage() {
   const location = useLocation();
@@ -24,7 +25,9 @@ export default function CategoryPage() {
 
   return (
     <>
-      <h1>{category ? category.title : 'Kategori hittades inte'}</h1>
+      <Title order={2} c='pink'>
+        {category ? category.title : 'Kategori hittades inte'}
+      </Title>
       <RecipeCardGrid recipes={filteredRecipes} />
     </>
   );
