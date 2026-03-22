@@ -6,7 +6,7 @@ type Props = {
   recipes: Recipe[];
 };
 
-export default function RecipeGardGrid({ recipes }: Props) {
+export default function RecipeCardGrid({ recipes }: Props) {
   if (recipes.length === 0) {
     return <p>Inga recept att visa.</p>;
   }

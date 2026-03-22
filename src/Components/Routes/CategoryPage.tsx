@@ -2,7 +2,7 @@ import { useLocation } from 'react-router-dom';
 import { categories } from '../../Data/categories';
 import { useMemo } from 'react';
 import { recipes } from '../../Data/recipes';
-import RecipeCardGrid from '../RecipeCard/RecipeGardGrid';
+import RecipeCardGrid from '../RecipeCard/RecipeCardGrid';
 
 export default function CategoryPage() {
   const location = useLocation();

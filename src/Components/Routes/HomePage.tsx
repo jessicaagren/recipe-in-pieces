@@ -1,5 +1,5 @@
 import { recipes } from '../../Data/recipes';
-import RecipeCardGrid from '../RecipeCard/RecipeGardGrid';
+import RecipeCardGrid from '../RecipeCard/RecipeCardGrid';
 
 export default function HomePage(): React.ReactNode {
   return (
