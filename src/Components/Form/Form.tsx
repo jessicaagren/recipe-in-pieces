@@ -50,7 +50,12 @@ export default function Form() {
 
   return (
     <Container size='sm'>
-      <Fieldset legend={<Title order={2}>Lägg till nytt recept</Title>}>
+      <Fieldset
+        legend={
+          <Title order={2} c='pink'>
+            Lägg till nytt recept
+          </Title>
+        }>
         <Stack gap='lg'>
           <TextInput label='Titel' />
 
