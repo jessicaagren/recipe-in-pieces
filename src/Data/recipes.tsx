@@ -50,6 +50,106 @@ export const recipes: Recipe[] = [
     ],
   }),
 
+  // Mat
+  create({
+    title: 'Köttbullar med potatismos',
+    categories: ['Mat', 'Lunch'],
+    tags: ['snabb'],
+    description: 'Svenska köttbullar med klassiskt potatismos.',
+  }),
+  create({
+    title: 'Enkel pastasallad',
+    categories: ['Mat', 'Middag'],
+    tags: ['snabb', 'vegetarisk'],
+    description: 'Pastasallad med grönsaker och dressing.',
+  }),
+  create({
+    title: 'Yoghurt med müsli',
+    categories: ['Mat', 'Frukost'],
+    tags: ['snabb'],
+    description: 'Enkel frukost med yoghurt och müsli.',
+  }),
+
+  // Efterrätt
+  create({
+    title: 'Chokladmousse',
+    categories: ['Efterrätt', 'Choklad'],
+    tags: ['sött'],
+    description: 'Len chokladmousse.',
+  }),
+  create({
+    title: 'Jordgubbspaj',
+    categories: ['Efterrätt', 'Paj'],
+    tags: ['sött'],
+    description: 'Somrig jordgubbspaj.',
+  }),
+  create({
+    title: 'Hemmagjord vaniljglass',
+    categories: ['Efterrätt', 'Glass'],
+    tags: ['sött'],
+    description: 'Krämig vaniljglass.',
+  }),
+
+  // Bakat
+  create({
+    title: 'Blåbärsmuffins',
+    categories: ['Bakat', 'Muffins och cupcakes'],
+    tags: ['sött'],
+    description: 'Saftiga muffins med blåbär.',
+  }),
+  create({
+    title: 'Sockerkaka',
+    categories: ['Bakat', 'Mjuka kakor'],
+    tags: ['sött'],
+    description: 'Klassisk sockerkaka.',
+  }),
+  create({
+    title: 'Chokladcookies',
+    categories: ['Bakat', 'Kakor och cookies'],
+    tags: ['sött'],
+    description: 'Knapriga cookies med chokladbitar.',
+  }),
+
+  // Snacks
+  create({
+    title: 'Kryddiga popcorn',
+    categories: ['Snacks', 'Popcorn'],
+    tags: ['snabb'],
+    description: 'Popcorn med chili och paprika.',
+  }),
+  create({
+    title: 'Honungsrostade nötter',
+    categories: ['Snacks', 'Nötter'],
+    tags: ['snabb', 'sött'],
+    description: 'Nötter rostade med honung.',
+  }),
+  create({
+    title: 'Hemmagjorda chips',
+    categories: ['Snacks', 'Chips'],
+    tags: ['snabb'],
+    description: 'Krispiga potatischips.',
+  }),
+
+  // Dryck
+  create({
+    title: 'Grön smoothie',
+    categories: ['Dryck', 'Smoothie'],
+    tags: ['vegansk', 'snabb'],
+    description: 'Smoothie med spenat och banan.',
+  }),
+  create({
+    title: 'Apelsinjuice',
+    categories: ['Dryck', 'Juice'],
+    tags: ['snabb'],
+    description: 'Färskpressad apelsinjuice.',
+  }),
+  create({
+    title: 'Virgin mojito',
+    categories: ['Dryck', 'Cocktail'],
+    tags: ['snabb'],
+    description: 'Alkoholfri mojito.',
+  }),
+
   create({
     title: 'Pannkakor',
     categories: ['Mat', 'Frukost'],
