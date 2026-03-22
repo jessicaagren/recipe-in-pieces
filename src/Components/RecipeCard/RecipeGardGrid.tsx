@@ -11,7 +11,7 @@ export default function RecipeGardGrid({ recipes }: Props) {
     return <p>Inga recept att visa.</p>;
   }
   return (
-    <SimpleGrid cols={{ base: 1, sm: 1, md: 3, lg: 4 }} spacing='lg'>
+    <SimpleGrid cols={{ base: 1, xs: 1, sm: 3, md: 4, lg: 5 }} spacing='lg'>
       {recipes.map((recipe) => (
         <RecipeCard key={recipe.id} recipe={recipe} />
       ))}
