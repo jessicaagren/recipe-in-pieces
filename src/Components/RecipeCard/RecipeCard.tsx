@@ -21,6 +21,7 @@ export default function RecipeCard({ recipe }: Props) {
     Mat: 'linear-gradient(135deg, #3A86FF 0%, #a0c4ff 100%)',
     Snacks: 'linear-gradient(135deg, #FB5607 0%, #ffd6a5 100%)',
     Dryck: 'linear-gradient(135deg, #8338EC 0%, #cdb4db 100%)',
+    Efterrätt: 'linear-gradient(135deg, #FFBE0B 0%, #ffe98f 100%)',
   };
   const gradient =
     gradients[mainCategory] || 'linear-gradient(135deg, #eee 0%, #ccc 100%)';
