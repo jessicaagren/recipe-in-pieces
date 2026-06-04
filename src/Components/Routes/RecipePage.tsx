@@ -17,9 +17,9 @@ import {
   NumberInput,
 } from '@mantine/core';
 import { useParams } from 'react-router-dom';
-import { useState } from 'react';
-import { recipes } from '../../Data/recipes';
 import { FiEdit3 } from 'react-icons/fi';
+import { client } from '../../sanityClient';
+import { useEffect, useState } from 'react';
 
 type Props = {
   recipeId?: string;
@@ -28,7 +28,23 @@ type Props = {
 export default function RecipePage({ recipeId }: Props): React.ReactNode {
   const params = useParams();
   const id = recipeId || params.recipeId;
-  const recipe = recipes.find((r) => r.id === id);
+  // const recipe = recipes.find((r) => r.id === id);
+
+  const [recipe, setRecipe] = useState<any>(null);
+
+  useEffect(() => {
+    const query = `*[_type == "recipe" && _id == $id][0]{
+    _id,
+    title,
+    description,
+    image,
+    ingredients,
+    instructions,
+    "category": category->title
+  }`;
+
+    client.fetch(query, { id }).then(setRecipe);
+  }, [id]);
 
   if (!recipe) return <div>Receptet hittades inte.</div>;
 
@@ -37,7 +53,7 @@ export default function RecipePage({ recipeId }: Props): React.ReactNode {
     ...recipe,
     ingredients: recipe.ingredients || [],
     instructions: recipe.instructions || [],
-    categories: recipe.categories || [],
+    categories: recipe.category || [],
   });
 
   const [isEditing, setIsEditing] = useState(false);
@@ -88,7 +104,7 @@ export default function RecipePage({ recipeId }: Props): React.ReactNode {
         <Group align='center'>
           {isEditing ? (
             <TextInput
-              value={editedRecipe.categories.join(', ')}
+              value={editedRecipe.category.join(', ')}
               onChange={(e) =>
                 setEditedRecipe({
                   ...editedRecipe,
@@ -97,7 +113,7 @@ export default function RecipePage({ recipeId }: Props): React.ReactNode {
               }
             />
           ) : (
-            recipe.categories.map((cat) => <Badge key={cat}>{cat}</Badge>)
+            recipe.category.map((cat) => <Badge key={cat}>{cat}</Badge>)
           )}
 
           <ActionIcon
@@ -205,7 +221,7 @@ export default function RecipePage({ recipeId }: Props): React.ReactNode {
                   ...recipe,
                   ingredients: recipe.ingredients || [],
                   instructions: recipe.instructions || [],
-                  categories: recipe.categories || [],
+                  categories: recipe.category || [],
                 });
                 setIsEditing(false);
               }}>
