@@ -20,7 +20,7 @@ export default function PlusButton() {
         setClicked(true);
         setTimeout(() => setClicked(false), 300);
       }}
-      className={`button-hover`}
+      className={`button-hover ${clicked ? '' : ''}`}
       variant='transparent'
       style={{
         backgroundImage: "url('/images/torn-paper/plus.png')",

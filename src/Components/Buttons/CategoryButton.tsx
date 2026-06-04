@@ -21,7 +21,7 @@ export default forwardRef<HTMLButtonElement, CategoryButtonProps>(
     return (
       <Button
         ref={ref}
-        className={`button-hover`}
+        className={`button-hover ${clicked ? '' : ''}`}
         variant='transparent'
         onClick={() => {
           if (path) navigate(path);
