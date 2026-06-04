@@ -30,10 +30,6 @@
   }
 }
 
-.button-hover:active {
-  transform: translateY(-55px) rotate(-55px);
-}
-
 .button-hover:hover {
   animation: button-shaking 0.3s ease;
   animation-iteration-count: 2;
