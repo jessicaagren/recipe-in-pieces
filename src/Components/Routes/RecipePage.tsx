@@ -10,9 +10,16 @@ import {
   Divider,
   Center,
   SimpleGrid,
+  Button,
+  ActionIcon,
+  TextInput,
+  Textarea,
+  NumberInput,
 } from '@mantine/core';
 import { useParams } from 'react-router-dom';
+import { useState } from 'react';
 import { recipes } from '../../Data/recipes';
+import { FiEdit3 } from 'react-icons/fi';
 
 type Props = {
   recipeId?: string;
@@ -25,14 +32,44 @@ export default function RecipePage({ recipeId }: Props): React.ReactNode {
 
   if (!recipe) return <div>Receptet hittades inte.</div>;
 
+  // ✅ Default values så vi slipper undefined-problem
+  const [editedRecipe, setEditedRecipe] = useState({
+    ...recipe,
+    ingredients: recipe.ingredients || [],
+    instructions: recipe.instructions || [],
+    categories: recipe.categories || [],
+  });
+
+  const [isEditing, setIsEditing] = useState(false);
+
   return (
     <Container size='lg'>
       <Stack>
-        <Title order={2} c='pink'>
-          {recipe.title}
-        </Title>
+        {/* TITLE */}
+        {isEditing ? (
+          <TextInput
+            value={editedRecipe.title}
+            onChange={(e) =>
+              setEditedRecipe({ ...editedRecipe, title: e.target.value })
+            }
+          />
+        ) : (
+          <Title order={2} c='pink'>
+            {recipe.title}
+          </Title>
+        )}
+
+        {/* IMAGE */}
         <SimpleGrid>
-          {recipe.image ? (
+          {isEditing ? (
+            <TextInput
+              placeholder='Bild-URL'
+              value={editedRecipe.image || ''}
+              onChange={(e) =>
+                setEditedRecipe({ ...editedRecipe, image: e.target.value })
+              }
+            />
+          ) : recipe.image ? (
             <Image h='auto' mah='400' alt={recipe.title} src={recipe.image} />
           ) : (
             <Center
@@ -46,32 +83,135 @@ export default function RecipePage({ recipeId }: Props): React.ReactNode {
             </Center>
           )}
         </SimpleGrid>
-        <Group>
-          {recipe.categories.map((cat) => (
-            <Badge key={cat}>{cat}</Badge>
-          ))}
+
+        {/* TAGS + EDIT */}
+        <Group align='center'>
+          {isEditing ? (
+            <TextInput
+              value={editedRecipe.categories.join(', ')}
+              onChange={(e) =>
+                setEditedRecipe({
+                  ...editedRecipe,
+                  categories: e.target.value.split(',').map((c) => c.trim()),
+                })
+              }
+            />
+          ) : (
+            recipe.categories.map((cat) => <Badge key={cat}>{cat}</Badge>)
+          )}
+
+          <ActionIcon
+            variant='subtle'
+            c='gray'
+            onClick={() => setIsEditing((prev) => !prev)}>
+            <FiEdit3 />
+          </ActionIcon>
         </Group>
-        {recipe.description && <Text fw={600}>{recipe.description}</Text>}
+
+        {/* DESCRIPTION */}
+        {isEditing ? (
+          <Textarea
+            value={editedRecipe.description || ''}
+            onChange={(e) =>
+              setEditedRecipe({
+                ...editedRecipe,
+                description: e.target.value,
+              })
+            }
+          />
+        ) : (
+          recipe.description && <Text fw={600}>{recipe.description}</Text>
+        )}
+
         <Divider />
-        {recipe.portions && <Text>Portioner: {recipe.portions}</Text>}
-        {recipe.ingredients && (
+
+        {/* PORTIONS ✅ fixad med NumberInput */}
+        {isEditing ? (
+          <NumberInput
+            value={editedRecipe.portions}
+            onChange={(value) =>
+              setEditedRecipe({
+                ...editedRecipe,
+                portions: typeof value === 'number' ? value : undefined,
+              })
+            }
+          />
+        ) : (
+          recipe.portions && <Text>Portioner: {recipe.portions}</Text>
+        )}
+
+        {/* INGREDIENTS ✅ alltid array */}
+        {isEditing ? (
+          editedRecipe.ingredients.map((ing, index) => (
+            <TextInput
+              key={index}
+              value={ing}
+              onChange={(e) => {
+                const updated = [...editedRecipe.ingredients];
+                updated[index] = e.target.value;
+                setEditedRecipe({ ...editedRecipe, ingredients: updated });
+              }}
+            />
+          ))
+        ) : (
           <List>
-            {recipe.ingredients.map((ing) => (
+            {recipe.ingredients?.map((ing) => (
               <List.Item key={ing}>{ing}</List.Item>
             ))}
           </List>
         )}
-        {recipe.instructions && (
+
+        {/* INSTRUCTIONS */}
+        {isEditing ? (
+          editedRecipe.instructions.map((step, index) => (
+            <Textarea
+              key={index}
+              value={step}
+              onChange={(e) => {
+                const updated = [...editedRecipe.instructions];
+                updated[index] = e.target.value;
+                setEditedRecipe({ ...editedRecipe, instructions: updated });
+              }}
+            />
+          ))
+        ) : (
           <>
             <Text mt='md' fw={600}>
               Instruktioner:
             </Text>
             <List type='ordered'>
-              {recipe.instructions.map((step) => (
+              {recipe.instructions?.map((step) => (
                 <List.Item key={step}>{step}</List.Item>
               ))}
             </List>
           </>
+        )}
+
+        {/* SAVE / CANCEL */}
+        {isEditing && (
+          <Group>
+            <Button
+              onClick={() => {
+                console.log('Sparat:', editedRecipe);
+                setIsEditing(false);
+              }}>
+              Spara
+            </Button>
+
+            <Button
+              variant='outline'
+              onClick={() => {
+                setEditedRecipe({
+                  ...recipe,
+                  ingredients: recipe.ingredients || [],
+                  instructions: recipe.instructions || [],
+                  categories: recipe.categories || [],
+                });
+                setIsEditing(false);
+              }}>
+              Avbryt
+            </Button>
+          </Group>
         )}
       </Stack>
     </Container>

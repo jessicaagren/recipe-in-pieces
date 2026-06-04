@@ -17,8 +17,11 @@ import { categories } from '../../Data/categories';
 import { tags as allTagOptions, type Tag } from '../../Data/tags';
 import IngredientInput from './IngredientInput';
 import InstructionsInput from './InstructionsInput';
+import RainbowArc from '../RainbowEffect/RainbowEffect';
 
 export default function Form() {
+  const [showRainbow, setShowRainbow] = useState(false);
+
   const [file, setFile] = useState<File | null>(null);
   const [mainCategory, setMainCategory] = useState('');
   const [subCategoriesSelected, setSubCategoriesSelected] = useState<string[]>(
@@ -98,9 +101,15 @@ export default function Form() {
 
           <ImageUpload file={file} setFile={setFile} />
 
-          <Button>Spara</Button>
+          <Button
+            onClick={() => {
+              setShowRainbow(true);
+            }}>
+            Spara
+          </Button>
         </Stack>
       </Fieldset>
+      <RainbowArc active={showRainbow} onDone={() => setShowRainbow(false)} />
     </Container>
   );
 }
