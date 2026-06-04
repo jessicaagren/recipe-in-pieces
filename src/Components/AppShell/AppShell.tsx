@@ -4,8 +4,8 @@ import {
   Stack,
   Title,
   Text,
-  Anchor,
   Image,
+  Button,
 } from '@mantine/core';
 import { categories } from '../../Data/categories';
 import CategoryMenu from '../CategoryMenu/CategoryMenu';
@@ -38,12 +38,14 @@ export default function AppShellComponent() {
         <Stack>
           <Group>
             <Title order={1}>
-              <Anchor
+              <Button
                 component={Link}
                 to={'/'}
                 variant='text'
                 c='dark'
-                size='xl'>
+                size='xl'
+                bg='transparent'
+                p={0}>
                 {/* Recipe in Pieces */}
                 <Image
                   src={logo}
@@ -54,7 +56,7 @@ export default function AppShellComponent() {
                     objectFit: 'contain',
                   }}
                 />
-              </Anchor>
+              </Button>
             </Title>
           </Group>
           <Group
