@@ -29,3 +29,30 @@
     opacity: 0;
   }
 }
+
+.button-hover:active {
+  transform: translateY(-55px) rotate(-55px);
+}
+
+.button-hover:hover {
+  animation: button-shaking 0.3s ease;
+  animation-iteration-count: 2;
+}
+
+@keyframes button-shaking {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}

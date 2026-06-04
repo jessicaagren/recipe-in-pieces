@@ -1,17 +1,29 @@
 import { Button } from '@mantine/core';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function PlusButton() {
   const navigate = useNavigate();
 
+  const [clicked, setClicked] = useState(false);
+
+  // const handleClick = () => {
+  //   setClicked(true);
+  //   navigate('/nytt-recept');
+  //   setTimeout(() => setClicked(false), 300);
+  // };
+
   return (
     <Button
       onClick={() => {
         navigate('/nytt-recept');
+        setClicked(true);
+        setTimeout(() => setClicked(false), 300);
       }}
+      className={`button-hover`}
       variant='transparent'
       style={{
-        backgroundImage: "url('/src/assets/torn-paper/plus.png')",
+        backgroundImage: "url('/images/torn-paper/plus.png')",
         backgroundSize: '100% 100%',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',

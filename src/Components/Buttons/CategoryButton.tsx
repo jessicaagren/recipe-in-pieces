@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { forwardRef, useState } from 'react';
 import { Button } from '@mantine/core';
 import type { Category } from '../../Data/categories';
 import { useNavigate } from 'react-router-dom';
@@ -16,12 +16,17 @@ export default forwardRef<HTMLButtonElement, CategoryButtonProps>(
     const navigate = useNavigate();
     const bg = `url(/images/torn-paper/${imageIndex || 1}.png)`;
 
+    const [clicked, setClicked] = useState(false);
+
     return (
       <Button
         ref={ref}
+        className={`button-hover`}
         variant='transparent'
         onClick={() => {
           if (path) navigate(path);
+          setClicked(true);
+          setTimeout(() => setClicked(false), 300);
         }}
         style={{
           backgroundImage: bg,
