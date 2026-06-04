@@ -26,13 +26,13 @@ export default function IngredientInput() {
       />
 
       {/* Preview */}
-      {/* {ingredients.length > 0 && (
+      {ingredients.length > 0 && (
         <ul>
           {ingredients.map((ing, index) => (
             <li key={index}>{ing}</li>
           ))}
         </ul>
-      )} */}
+      )}
     </>
   );
 }
