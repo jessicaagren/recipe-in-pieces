@@ -32,13 +32,13 @@ Tillsätt tomater`}
       />
 
       {/* Preview */}
-      {/* {instructions.length > 0 && (
+      {instructions.length > 0 && (
         <ol style={{ marginTop: '10px' }}>
           {instructions.map((step, i) => (
             <li key={i}>{step}</li>
           ))}
         </ol>
-      )} */}
+      )}
     </>
   );
 }
