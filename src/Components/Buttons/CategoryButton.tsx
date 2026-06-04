@@ -14,7 +14,7 @@ type CategoryButtonProps = {
 export default forwardRef<HTMLButtonElement, CategoryButtonProps>(
   ({ path, category, imageIndex, title }, ref) => {
     const navigate = useNavigate();
-    const bg = `url(/src/assets/torn-paper/${imageIndex || 1}.png)`;
+    const bg = `url(/images/torn-paper/${imageIndex || 1}.png)`;
 
     return (
       <Button

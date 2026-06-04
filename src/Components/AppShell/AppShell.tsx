@@ -12,7 +12,7 @@ import CategoryMenu from '../CategoryMenu/CategoryMenu';
 import { Link, Outlet } from 'react-router-dom';
 import PlusButton from '../Buttons/PlusButton';
 import { useWindowScroll } from '@mantine/hooks';
-import logo from './assets/logo.svg';
+import logo from '/images/logo1.svg';
 
 export default function AppShellComponent() {
   const [scroll] = useWindowScroll();
