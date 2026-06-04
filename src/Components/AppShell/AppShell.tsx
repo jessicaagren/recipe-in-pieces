@@ -12,6 +12,7 @@ import CategoryMenu from '../CategoryMenu/CategoryMenu';
 import { Link, Outlet } from 'react-router-dom';
 import PlusButton from '../Buttons/PlusButton';
 import { useWindowScroll } from '@mantine/hooks';
+import logo from './assets/logo.svg';
 
 export default function AppShellComponent() {
   const [scroll] = useWindowScroll();
@@ -45,7 +46,7 @@ export default function AppShellComponent() {
                 size='xl'>
                 {/* Recipe in Pieces */}
                 <Image
-                  src='/src/assets/logo1.svg'
+                  src={logo}
                   alt='Recipe in Pieces logo'
                   style={{
                     height: isSmall ? 40 : 60,
